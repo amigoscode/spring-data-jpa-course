@@ -30,5 +30,5 @@ public interface StudentRepository extends PagingAndSortingRepository<Student, L
     @Transactional
     @Modifying
     @Query("DELETE FROM Student u WHERE u.id = ?1")
-    int deleteStudentById(Long id);
+    int  deleteStudentById(Long id);
 }

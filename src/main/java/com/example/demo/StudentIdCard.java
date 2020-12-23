@@ -1,6 +1,5 @@
 package com.example.demo;
 
-import javax.annotation.PreDestroy;
 import javax.persistence.*;
 
 import static javax.persistence.GenerationType.SEQUENCE;
