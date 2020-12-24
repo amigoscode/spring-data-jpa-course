@@ -35,10 +35,8 @@ public class Application {
             student.addBook(
                     new Book("Clean Code", LocalDateTime.now().minusDays(4)));
 
-
             student.addBook(
                     new Book("Think and Grow Rich", LocalDateTime.now()));
-
 
             student.addBook(
                     new Book("Spring Data JPA", LocalDateTime.now().minusYears(1)));
@@ -48,6 +46,12 @@ public class Application {
                     student);
 
             student.setStudentIdCard(studentIdCard);
+
+            student.enrolToCourse(
+                    new Course("Computer Science", "IT"));
+
+            student.enrolToCourse(
+                    new Course("Amigoscode Sring Data JPA", "IT"));
 
             studentRepository.save(student);
 
