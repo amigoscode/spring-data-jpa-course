@@ -47,11 +47,28 @@ public class Application {
 
             student.setStudentIdCard(studentIdCard);
 
-            student.enrolToCourse(
-                    new Course("Computer Science", "IT"));
+            student.addEnrolment(new Enrolment(
+                    new EnrolmentId(1L, 1L),
+                    student,
+                    new Course("Computer Science", "IT"),
+                    LocalDateTime.now()
+            ));
 
-            student.enrolToCourse(
-                    new Course("Amigoscode Sring Data JPA", "IT"));
+            student.addEnrolment(new Enrolment(
+                    new EnrolmentId(1L, 2L),
+                    student,
+                    new Course("Amigoscode Spring Data JPA", "IT"),
+                    LocalDateTime.now().minusDays(18)
+            ));
+
+            student.addEnrolment(new Enrolment(
+                    new EnrolmentId(1L, 2L),
+                    student,
+                    new Course("Amigoscode Spring Data JPA", "IT"),
+                    LocalDateTime.now().minusDays(18)
+            ));
+
+
 
             studentRepository.save(student);
 
@@ -64,11 +81,6 @@ public class Application {
                                     s.getFirstName() + " borrowed " + book.getBookName());
                         });
                     });
-//
-//            studentIdCardRepository.findById(1L)
-//                    .ifPresent(System.out::println);
-
-//            studentRepository.deleteById(1L);
 
         };
     }
