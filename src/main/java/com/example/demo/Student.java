@@ -57,8 +57,7 @@ public class Student {
     )
     private String email;
 
-    public Student(Long id, String firstName, String lastName, Integer age, String email) {
-        this.id = id;
+    public Student(String firstName, String lastName, Integer age, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
