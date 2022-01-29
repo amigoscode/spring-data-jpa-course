@@ -22,4 +22,12 @@ public class StudentService {
     {
         return studentRepository.save(student);
     }
+
+    public List<Student> getStudentByFirstName(String firstName) {
+        return studentRepository.findAllByFirstName(firstName);
+    }
+
+    public Student getStudentByEmail(String email) {
+        return studentRepository.findByEmail(email);
+    }
 }

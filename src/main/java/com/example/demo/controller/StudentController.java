@@ -23,16 +23,28 @@ public class StudentController {
         return "Hello World!";
     }
 
-    @GetMapping(path = "get_students")
+    @GetMapping(path = "getStudents")
     public List<Student> getStudents()
     {
         return studentService.getStudents();
     }
 
-    @PostMapping(path = "save_student")
+    @PostMapping(path = "saveStudent")
     public Student saveStudent(@RequestBody Student student)
     {
         System.out.println(student);
         return studentService.saveStudent(student);
+    }
+
+    @GetMapping(path = "getStudentByFirstName")
+    public List<Student> getStudentByName(String firstName)
+    {
+        return studentService.getStudentByFirstName(firstName);
+    }
+
+    @GetMapping(path = "getStudentByEmail")
+    public Student getStudentByEmail(String email)
+    {
+        return studentService.getStudentByEmail(email);
     }
 }
