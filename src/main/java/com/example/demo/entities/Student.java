@@ -1,5 +1,7 @@
 package com.example.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 import static javax.persistence.GenerationType.SEQUENCE;
@@ -23,6 +25,7 @@ public class Student {
             strategy = SEQUENCE,
             generator = "student_generator"
     )
+    @JsonIgnore
     @Column(
             name = "id",
             updatable = false
@@ -56,6 +59,30 @@ public class Student {
             columnDefinition = "TEXT"
     )
     private String email;
+
+    @Transient
+    private String ignore;
+//    this field is completely ignored
+
+//    the child is on the left and the parent is on the right
+//    many students can have one country
+    @ManyToOne
+    @JoinColumn(name = "country_id")
+    private Country country;
+
+    @Column(
+            name = "field",
+            nullable = false,
+            columnDefinition = "character varying(10) not null default 'NA'"
+    )
+    private String field;
+//    -> this field is added from the class, and because of ddl-auto=update, has been
+//    added to the table.
+//    sql - alter table student_table
+//       add column field varchar(255)
+//    -> column definition is the SQL that will be executed when this col is created
+//    alter table student_table
+//       add column field character varying(10) not null default 'NA' not null
 
     public Student(String firstName, String lastName, Integer age, String email) {
         this.firstName = firstName;
@@ -105,5 +132,21 @@ public class Student {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getField() {
+        return field;
+    }
+
+    public void setField(String field) {
+        this.field = field;
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
     }
 }
