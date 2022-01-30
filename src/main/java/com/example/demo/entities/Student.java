@@ -71,7 +71,7 @@ public class Student {
     private Country country;
 
     @Column(name = "country_id")
-    private Integer countryId;
+    private Long countryId;
 
     @Column(
             name = "field",
@@ -92,6 +92,15 @@ public class Student {
         this.lastName = lastName;
         this.age = age;
         this.email = email;
+    }
+
+    public Student(String firstName, String lastName, Integer age, String email, String field, Country country) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.email = email;
+        this.field = field;
+        this.country = country;
     }
 
     public Student() {
@@ -153,11 +162,11 @@ public class Student {
         this.country = country;
     }
 
-    public Integer getCountryId() {
+    public Long getCountryId() {
         return countryId;
     }
 
-    public void setCountryId(Integer countryId) {
+    public void setCountryId(Long countryId) {
         this.countryId = countryId;
     }
 }

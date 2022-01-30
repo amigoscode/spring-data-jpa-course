@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.entities.Student;
+import com.example.demo.pojos.StudentRequest;
 import com.example.demo.repositories.StudentRepository;
 import com.example.demo.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +33,13 @@ public class StudentController {
     @PostMapping(path = "saveStudent")
     public Student saveStudent(@RequestBody Student student)
     {
-        System.out.println(student);
         return studentService.saveStudent(student);
+    }
+
+    @PostMapping(path = "saveStudentByPojo")
+    public Student saveStudentByPojo(@RequestBody StudentRequest studentRequest)
+    {
+        return studentService.saveStudentByPojo(studentRequest);
     }
 
     @GetMapping(path = "getStudentByFirstName")
