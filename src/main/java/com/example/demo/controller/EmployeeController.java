@@ -52,4 +52,65 @@ public class EmployeeController {
     {
         return employeeRepository.findByEmployeeNameAndLeftJobFalse(employeeName);
     }
+
+    @GetMapping("getEmployeeByIdJPQL")
+    public Employee getEmployeeByIdJPQL(@RequestParam Integer employeeId)
+    {
+        return employeeRepository.getEmployeeById(employeeId);
+    }
+
+    @GetMapping("getEmployeeByNameJPQL")
+    public List<Employee> getEmployeeByNameJPQL(@RequestParam String name)
+    {
+        return employeeRepository.getEmployeeByName(name);
+    }
+
+    @GetMapping("getEmployeeByNameActiveJPQL")
+    public List<Employee> getEmployeeByNameActiveJPQL(@RequestParam String name)
+    {
+        return employeeRepository.getEmployeeByNameActive(name);
+    }
+
+    @GetMapping("getEmployeeByNameAndStatusJPQL")
+    public List<Employee> getEmployeeByNameAndStatusJPQL(@RequestParam String name, Boolean leftJob)
+    {
+        return employeeRepository.getEmployeeByNameAndStatus(name, leftJob);
+    }
+
+    @GetMapping("getEmployeeByDeptJPQL")
+    public List<Employee> getEmployeeByDeptJPQL(@RequestParam String deptName)
+    {
+        return employeeRepository.getEmployeeByDept(deptName);
+    }
+
+    @GetMapping("getEmployeeByDeptsJPQL")
+    public List<Employee> getEmployeeByDeptsJPQL(@RequestBody List<String> deptName)
+    {
+        return employeeRepository.getEmployeeByDepts(deptName);
+    }
+
+    @GetMapping("getEmployeeBySalaryJPQL")
+    public List<Employee> getEmployeeBySalaryJPQL(@RequestParam Float baseSalary)
+    {
+        return employeeRepository.getEmployeeBySalary(baseSalary);
+    }
+
+    @GetMapping("getEmployeesBetweenAgesJPQL")
+    public List<Employee> getEmployeesBetweenAges(@RequestParam Integer startAge, @RequestParam Integer endAge)
+    {
+        return employeeRepository.getEmployeesBetweenAges(startAge, endAge);
+    }
+
+    @GetMapping("getEmployeesNameDeptBetweenAgesJPQL")
+    public List<Object> getEmployeesNameDeptBetweenAges(@RequestParam Integer startAge, @RequestParam Integer endAge)
+    {
+        return employeeRepository.getEmployeesNamesDeptsBetweenAges(startAge, endAge);
+    }
+
+    @GetMapping("getEmployeesNameDeptBetweenAgesNative")
+    public List<Object> getEmployeesNameDeptBetweenAgesNative(@RequestParam Integer startAge,
+                                                              @RequestParam Integer endAge)
+    {
+        return employeeRepository.getEmployeesNamesDeptsBetweenAgesNative(startAge, endAge);
+    }
 }

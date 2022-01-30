@@ -1,5 +1,7 @@
 package com.example.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.time.ZonedDateTime;
 import java.util.Date;
@@ -10,6 +12,7 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "employee_id", nullable = false)
+    @JsonIgnore
     private Integer employeeId;
 
     @Column(name = "employee_name", nullable = false, length = 100)

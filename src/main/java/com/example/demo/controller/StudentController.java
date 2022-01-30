@@ -5,18 +5,19 @@ import com.example.demo.pojos.StudentRequest;
 import com.example.demo.repositories.StudentRepository;
 import com.example.demo.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("students/")
 public class StudentController {
 
     @Autowired
     StudentService studentService;
+
+    @Autowired
+    StudentRepository studentRepository;
 
     @GetMapping(path = "hello-world")
     public String helloWorld()
@@ -52,5 +53,11 @@ public class StudentController {
     public Student getStudentByEmail(String email)
     {
         return studentService.getStudentByEmail(email);
+    }
+
+    @GetMapping("getStudentsWithCountry")
+    public List<Object> getStudentsWithCountry()
+    {
+        return studentRepository.getStudentWithCountry();
     }
 }
