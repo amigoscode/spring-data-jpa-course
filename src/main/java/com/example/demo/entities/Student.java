@@ -67,8 +67,11 @@ public class Student {
 //    the child is on the left and the parent is on the right
 //    many students can have one country
     @ManyToOne
-    @JoinColumn(name = "country_id")
+    @JoinColumn(name = "country_id", insertable = false, updatable = false)
     private Country country;
+
+    @Column(name = "country_id")
+    private Integer countryId;
 
     @Column(
             name = "field",
@@ -148,5 +151,13 @@ public class Student {
 
     public void setCountry(Country country) {
         this.country = country;
+    }
+
+    public Integer getCountryId() {
+        return countryId;
+    }
+
+    public void setCountryId(Integer countryId) {
+        this.countryId = countryId;
     }
 }
