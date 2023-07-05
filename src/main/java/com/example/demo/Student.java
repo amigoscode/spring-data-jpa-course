@@ -3,7 +3,7 @@ package com.example.demo;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity
+@Entity(name = "Student")
 public class Student {
     @Id
     private Long id;
